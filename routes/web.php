@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Http\Request;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::get('/my-page', function(){
+    return 'This is my page';
+});
+
+Route::get('/sum', function(Request $request){
+    $data = $request -> all();
+
+    try{
+        if($data['x']  &&  $data['y'] ){
+            $result = $data['x'] + $data['y'];
+            return $result;
+        }
+    } catch(Exception $e){
+            echo 'PHP перехватил исключение: ',  $e->getMessage(), "\n";
+  
+    }
 });
