@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\MyTestController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Http\Request;
 
@@ -19,20 +20,4 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/my-page', function(){
-    return 'This is my page';
-});
-
-Route::get('/sum', function(Request $request){
-    $data = $request -> all();
-
-    try{
-        if($data['x']  &&  $data['y'] ){
-            $result = $data['x'] + $data['y'];
-            return $result;
-        }
-    } catch(Exception $e){
-            echo 'PHP перехватил исключение: ',  $e->getMessage(), "\n";
-  
-    }
-});
+Route::get('/my-page', [MyTestController::class, 'index']);
