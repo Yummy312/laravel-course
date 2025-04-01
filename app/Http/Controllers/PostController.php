@@ -64,4 +64,39 @@ class PostController extends Controller
         dd('post deleted');
     }
 
+    public function firstOrCreate(){
+        $anotherPost = [
+            'title' => 'some post',
+            'content' => 'some content',
+            'image' => 'someImage.jpeg',
+            'likes' => 100,
+            'is_published' => 1,
+        ];
+        
+        $post = Post::firstOrCreate(
+            ['title'=> 'some post'],  // Атрибуты, по которым ищется запись
+         $anotherPost  //Если такого нет, создается новый пост 
+        );
+
+        dd($post -> title);
+    }
+
+
+    public function updateOrCreate(){
+        $anotherPost = [
+            'title' => 'updateorcreate some post',
+            'content' => 'updateorcreate some post',
+            'image' => 'updateorcreate.jpeg',
+            'likes' => 3,
+            'is_published' => 0,
+        ];
+
+        $post = Post::updateOrCreate(
+            ['title' => 'updateorcreate some post'], // Ищем пост с заголовком 'updateorcreate some post'
+            $anotherPost  //Если пост найден, обновляем его, если нет — создаем новый с данными из $anotherPost
+            
+        );
+
+        dd($post -> content);
+    }
 }
