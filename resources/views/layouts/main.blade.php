@@ -4,25 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 </head>
 <body>
-    <div>
-        <nav>
-            <ul>
-                <li>
-                    <a href="{{ route( 'post.index')}}">posts</a>
-                </li>
-                <li>
-                    <a href="{{ route('about.index')}}">about</a>
-                </li>
-                  <li>
-                    <a href="{{ route('contact.index')}}">contacts</a>
-                </li>
-            </ul>
-        </nav>
-    </div>
+    <div class="container">
+        <div class="row">
 
-    @yield('content')
+            <nav class="navbar navbar-expand-lg bg-body-tertiary">
+                <div class="container-fluid">
+                   
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+                        <a class="nav-link" href="{{ route( 'post.index')}}">Posts</a>
+                        <a class="nav-link" href="{{ route('about.index')}}">About</a>
+                        <a class="nav-link" href="{{ route('contact.index')}}">Contacts</a>
+                        
+                    </div>
+                    </div>
+                </div>
+            </nav>
+           
+        </div>
+
+        
+
+        @yield('content')
+    </div>
 
 </body>
 </html>
